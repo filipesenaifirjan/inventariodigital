@@ -1,3 +1,9 @@
 FotoEquipamento As screen:
     Fill: =RGBA(14, 123, 240, 0.08)
 
+    Header_5 As Header:
+
+    Menu_4 As Menu:
+        Y: =1016
+        ZIndex: =2
+
