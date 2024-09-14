@@ -1,0 +1,28 @@
+Header As CanvasComponent:
+    Fill: =azul900
+    Height: =100
+    Rotulo: ="Text"
+    Width: =640
+    X: =0
+    Y: =0
+    ZIndex: =1
+
+    Label5 As label:
+        Align: =Align.Center
+        Color: =RGBA(255, 255, 255, 1)
+        FontWeight: =FontWeight.Semibold
+        Height: =100
+        Size: =24
+        Text: =Header.Rotulo
+        Width: =436
+        X: =95
+        ZIndex: =1
+
+    Icon3 As icon.ChevronLeft:
+        Color: =RGBA(255, 255, 255, 1)
+        Height: =100
+        Icon: =Icon.ChevronLeft
+        OnSelect: =Back()
+        X: =7
+        ZIndex: =2
+

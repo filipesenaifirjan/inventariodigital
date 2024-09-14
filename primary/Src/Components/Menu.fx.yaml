@@ -1,0 +1,76 @@
+Menu As CanvasComponent:
+    dadosDoMenu: |-
+        =Table(
+            {
+               Nome: "Home",
+               Icon: Icon.Home,
+               Tela: App.ActiveScreen,
+               visivel: true
+            },
+            {
+               Nome: "Inventários",
+               Icon: Icon.DockCheckProperties,
+               Tela: App.ActiveScreen,
+               visivel: true
+            },
+            {
+               Nome: "Equipamentos",
+               Icon: Icon.Devices,
+               Tela: App.ActiveScreen,
+               visivel: true
+            },
+            {
+               Nome: "Admin",
+               Icon: Icon.Person,
+               Tela: App.ActiveScreen,
+               visivel: varAdmin
+            }
+        )
+    Fill: =RGBA(0, 0, 0, 0)
+    Height: =120
+    Width: =640
+    X: =0
+    Y: =0
+    ZIndex: =1
+
+    "GalleryMenuComponente As gallery.'BrowseLayout_Horizontal_TwoTextOneImageVariant_ver5.0'":
+        DelayItemLoading: =true
+        Height: =Parent.Height
+        Items: =Menu.dadosDoMenu
+        LoadingSpinner: =LoadingSpinner.Data
+        TemplatePadding: =0
+        TemplateSize: =160
+        Transition: =Transition.Pop
+        Width: =Parent.Width
+        ZIndex: =1
+
+        Title1 As label:
+            Align: =Align.Center
+            Color: =azul900
+            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+            Height: =27
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Text: =ThisItem.Nome
+            VerticalAlign: =VerticalAlign.Top
+            Width: =158
+            Y: =90
+            ZIndex: =2
+
+        "Icon5 As icon.'3DPrinting'":
+            Color: =azul900
+            Icon: =ThisItem.Icon
+            OnSelect: =Navigate(ThisItem.Tela)
+            X: =48
+            Y: =12
+            ZIndex: =3
+
+    Rectangle1 As rectangle:
+        Fill: =azul900
+        Height: =3
+        Width: =Parent.Width
+        ZIndex: =2
+

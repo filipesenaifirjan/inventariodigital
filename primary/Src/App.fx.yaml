@@ -1,0 +1,58 @@
+App As appinfo:
+    BackEnabled: =true
+    OnStart: |+
+        =Set(azul900,ColorValue("#03538c"));
+         Set(varAdmin, !IsBlank( LookUp(Administradores, Título = User().Email)));
+         
+        Set(varIconEquipamento, 
+         "data:image/svg+xml;utf8, " & EncodeUrl("<svg xmlns='http://www.w3.org/2000/svg' width='192' height='192' viewBox='0 0 24 24'><path fill='#2d3436' d='M1 2h22v4h-2V4H3v13h9v2H1zm13 6h10v14H14zm2 2v10h6V10zm1.998 6.998h2.004v2.004h-2.004zM5 20h7v2H5z'/></svg>"));
+         
+         Set(varIconAdmin, "data:image/svg+xml;utf8, " & EncodeUrl("<svg xmlns='http://www.w3.org/2000/svg' width='192' height='192' viewBox='0 0 24 24'><path fill='#2d3436' d='M12 14v2a6 6 0 0 0-6 6H4a8 8 0 0 1 8-8m0-1c-3.315 0-6-2.685-6-6s2.685-6 6-6s6 2.685 6 6s-2.685 6-6 6m0-2c2.21 0 4-1.79 4-4s-1.79-4-4-4s-4 1.79-4 4s1.79 4 4 4m9 6h1v5h-8v-5h1v-1a3 3 0 1 1 6 0zm-2 0v-1a1 1 0 1 0-2 0v1z'/></svg>"));
+         
+         Set(varIconInventario,
+         "data:image/svg+xml;utf8,  " & EncodeUrl("<svg xmlns='http://www.w3.org/2000/svg' width='192' height='192' viewBox='0 0 24 24'><path fill='#2d3436' d='m15.5 19.925l-4.25-4.25l1.4-1.4l2.85 2.85l5.65-5.65l1.4 1.4zM21 10h-2V5h-2v3H7V5H5v14h6v2H3V3h6.175q.275-.875 1.075-1.437T12 1q1 0 1.788.563T14.85 3H21zm-9-5q.425 0 .713-.288T13 4t-.288-.712T12 3t-.712.288T11 4t.288.713T12 5'/></svg> "));
+          
+          Set(varIconRelatorio,
+         "data:image/svg+xml;utf8,  " & EncodeUrl("<svg xmlns='http://www.w3.org/2000/svg' width='192' height='192' viewBox='0 0 24 24'><g fill='none' stroke='#2d3436' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'><path d='M8 5H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h5.697M18 14v4h4m-4-7V7a2 2 0 0 0-2-2h-2'/><path d='M8 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v0a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2m6 13a4 4 0 1 0 8 0a4 4 0 1 0-8 0m-6-7h4m-4 4h3'/></g></svg> "));
+        
+         Set(varIconLista,
+         "data:imagee/svg+xml;utf8, " & EncodeUrl("<svg xmlns='http://www.w3.org/2000/svg' width='192' height='192' viewBox='0 0 24 24'><path fill='#2d3436' fill-rule='evenodd' d='M20 4H4a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1M4 2a3 3 0 0 0-3 3v14a3 3 0 0 0 3 3h16a3 3 0 0 0 3-3V5a3 3 0 0 0-3-3zm2 5h2v2H6zm5 0a1 1 0 1 0 0 2h6a1 1 0 1 0 0-2zm-3 4H6v2h2zm2 1a1 1 0 0 1 1-1h6a1 1 0 1 1 0 2h-6a1 1 0 0 1-1-1m-2 3H6v2h2zm2 1a1 1 0 0 1 1-1h6a1 1 0 1 1 0 2h-6a1 1 0 0 1-1-1' clip-rule='evenodd'/></svg>"));
+        
+        
+         ClearCollect(colTabMenu,
+         {
+            Titulo: "Inventário",
+            Imagem: varIconInventario,
+            Tela: listagemInventario
+         },
+          {
+            Titulo: "Equipamento",
+            Imagem: varIconEquipamento,
+            Tela: ListagemEquipamentos
+         },
+          {
+            Titulo: "Relatórios",
+            Imagem: varIconRelatorio,
+            Tela: RelatorioGeral
+         },
+          {
+            Titulo: "Administração",
+            Imagem: varIconAdmin,
+            Tela: If(varAdmin, Admin,AcessoNegado)
+         }
+         )
+        
+        
+        
+         
+          
+        
+    Theme: =PowerAppsTheme
+
+    Host As hostControl.DefaultHostControlVariant:
+        OnCancel: =false
+        OnEdit: =false
+        OnNew: =false
+        OnSave: =false
+        OnView: =false
+

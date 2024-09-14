@@ -1,0 +1,47 @@
+{
+  "ee336294-9501-4951-944f-ce67843b170b": {
+    "appActions": [
+      "providers/PowerPlatform.Governance/Operations/Read",
+      "providers/PowerPlatform.Governance/Operations/Delete"
+    ],
+    "connectionRef": {
+      "apiTier": "Standard",
+      "displayName": "SharePoint",
+      "iconUri": "https://connectoricons-prod.azureedge.net/u/jayawan/releases/v1.0.1697/1.0.1697.3786/sharepointonline/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_sharepointonline",
+      "parameterHints": {},
+      "parameterHintsV2": {}
+    },
+    "datasets": {
+      "https://t2mlabtst.sharepoint.com/sites/Suporte2": {
+        "dataSources": {
+          "Administradores": {
+            "tableName": "61735e20-749e-4073-a209-b8c9aaf6048f"
+          },
+          "Equipamentos": {
+            "tableName": "78e076ba-71d2-4531-bcab-b3d8dfa13702"
+          },
+          "Inventario": {
+            "tableName": "0857770e-d11e-4617-940a-0b924ae9280b"
+          },
+          "itens_inventariados": {
+            "tableName": "32f7b8bf-75e5-4cee-9158-3533a634a737"
+          },
+          "Localidade": {
+            "tableName": "b1461f65-69ba-4f13-8b8d-01bc3d89dba8"
+          }
+        }
+      }
+    },
+    "dataSources": [
+      "Administradores",
+      "Equipamentos",
+      "Inventario",
+      "itens_inventariados",
+      "Localidade"
+    ],
+    "dependencies": {},
+    "dependents": [],
+    "id": "ee336294-9501-4951-944f-ce67843b170b"
+  }
+}

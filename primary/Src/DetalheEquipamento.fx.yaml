@@ -1,0 +1,481 @@
+DetalheEquipamento As screen:
+    Fill: =RGBA(14, 123, 240, 0.08)
+    OnVisible: =ClearCollect(colImagens, GalleryEquipamentos.Selected.Anexos)
+
+    Header_3 As Header:
+        Rotulo: =GalleryEquipamentos.Selected.Título
+
+    Menu_2 As Menu:
+        dadosDoMenu: |-
+            =Table(
+                {
+                   Nome: "Home",
+                   Icon: Icon.Home,
+                   Tela: HomeInventario,
+                   visivel: true
+                },
+                {
+                   Nome: "Inventários",
+                   Icon: Icon.DockCheckProperties,
+                   Tela: listagemInventario,
+                   visivel: true
+                },
+                {
+                   Nome: "Novo",
+                   Icon: Icon.Add,
+                   Tela: CriarEditarEquipamento,
+                   visivel: true
+                },
+                {
+                   Nome: "Admin",
+                   Icon: Icon.Person,
+                   Tela: Admin,
+                   visivel: varAdmin
+                }
+            )
+        Y: =1016
+        ZIndex: =2
+
+    HtmlText1_1 As htmlViewer:
+        Height: =903
+        HtmlText: |-
+            ="<div style='border-radius:8%;height:870px;width:100%;background-color:#FCFCFC'>
+            </div>"
+        Size: =21
+        Width: =585
+        X: =28
+        Y: =112
+        ZIndex: =3
+
+    FormViewer1 As formViewer:
+        DataSource: =Equipamentos
+        Height: =479
+        Item: =GalleryEquipamentos.Selected
+        Width: =640
+        Y: =165
+        ZIndex: =4
+
+        Título_DataCard1 As typedDataCard.textualViewCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="Title"
+            Default: =ThisItem.Título
+            DisplayMode: =DisplayMode.View
+            DisplayName: =DataSourceInfo([@Equipamentos],DataSourceInfo.DisplayName,Title)
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =40
+            Required: =false
+            Width: =640
+            X: =0
+            Y: =0
+            ZIndex: =5
+
+            DataCardKey1 As label:
+                AutoHeight: =true
+                Height: =48
+                Size: =21
+                Text: =Parent.DisplayName
+                Width: =(Parent.Width - 60) * 0.4
+                Wrap: =false
+                X: =30
+                Y: =10 + (DataCardValue1.Height / 2) - (Self.Height / 2)
+                ZIndex: =1
+
+            DataCardValue1 As label:
+                AutoHeight: =true
+                DisplayMode: =Parent.DisplayMode
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Size: =21
+                Text: =Parent.Default
+                Width: =(Parent.Width - 60) * 0.6
+                X: =DataCardKey1.X + DataCardKey1.Width
+                Y: =10
+                ZIndex: =2
+
+        Descricao_DataCard1 As typedDataCard.textualViewCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="Descricao"
+            Default: =ThisItem.Descricao
+            DisplayMode: =DisplayMode.View
+            DisplayName: =DataSourceInfo([@Equipamentos],DataSourceInfo.DisplayName,Descricao)
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =40
+            Required: =false
+            Width: =640
+            X: =0
+            Y: =1
+            ZIndex: =5
+
+            DataCardKey2 As label:
+                AutoHeight: =true
+                Height: =48
+                Size: =21
+                Text: =Parent.DisplayName
+                Width: =(Parent.Width - 60) * 0.4
+                Wrap: =false
+                X: =30
+                Y: =10 + (DataCardValue2.Height / 2) - (Self.Height / 2)
+                ZIndex: =1
+
+            DataCardValue2 As label:
+                AutoHeight: =true
+                DisplayMode: =Parent.DisplayMode
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Size: =21
+                Text: =Parent.Default
+                Width: =(Parent.Width - 60) * 0.6
+                X: =DataCardKey2.X + DataCardKey2.Width
+                Y: =10
+                ZIndex: =2
+
+        Categoria_DataCard1 As typedDataCard.comboBoxViewCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="Categoria"
+            Default: =ThisItem.Categoria
+            DisplayMode: =DisplayMode.View
+            DisplayName: =DataSourceInfo([@Equipamentos],DataSourceInfo.DisplayName,Categoria)
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            Required: =false
+            Update: =DataCardValue3.Selected
+            Width: =640
+            X: =0
+            Y: =2
+            ZIndex: =5
+
+            DataCardKey3 As label:
+                AutoHeight: =true
+                Height: =48
+                Size: =21
+                Text: =Parent.DisplayName
+                Width: =(Parent.Width - 60) * 0.4
+                Wrap: =false
+                X: =40
+                Y: =10 + (DataCardValue3.Height / 2) - (Self.Height / 2)
+                ZIndex: =1
+
+            DataCardValue3 As combobox:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                DefaultSelectedItems: =Parent.Default
+                DisplayFields: =["Value"]
+                DisplayMode: =Parent.DisplayMode
+                Height: =70
+                Items: =Choices([@Equipamentos].Categoria)
+                PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                SearchFields: =["Value"]
+                SearchItems: =Choices(Equipamentos.Categoria,DataCardValue3.SearchText)
+                SelectMultiple: =false
+                Size: =21
+                Width: =(Parent.Width - 60) * 0.6
+                X: =DataCardKey3.X + DataCardKey3.Width
+                Y: =10
+                ZIndex: =2
+
+            ErrorMessage1 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Size: =24
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue3.Y + DataCardValue3.Height
+                ZIndex: =3
+
+            StarVisible1 As label:
+                Align: =Align.Center
+                Height: =DataCardKey3.Height
+                Size: =21
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey3.Y
+                ZIndex: =4
+
+        codigo_barras_DataCard1 As typedDataCard.textualViewCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="codigo_barras"
+            Default: =ThisItem.codigo_barras
+            DisplayMode: =DisplayMode.View
+            DisplayName: =DataSourceInfo([@Equipamentos],DataSourceInfo.DisplayName,codigo_barras)
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =40
+            Required: =false
+            Width: =640
+            X: =0
+            Y: =3
+            ZIndex: =5
+
+            DataCardKey4 As label:
+                AutoHeight: =true
+                Height: =48
+                Size: =21
+                Text: =Parent.DisplayName
+                Width: =(Parent.Width - 60) * 0.4
+                Wrap: =false
+                X: =30
+                Y: =10 + (DataCardValue4.Height / 2) - (Self.Height / 2)
+                ZIndex: =1
+
+            DataCardValue4 As label:
+                AutoHeight: =true
+                DisplayMode: =Parent.DisplayMode
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Size: =21
+                Text: =Parent.Default
+                Width: =(Parent.Width - 60) * 0.6
+                X: =DataCardKey4.X + DataCardKey4.Width
+                Y: =10
+                ZIndex: =2
+
+        fabricante_DataCard1 As typedDataCard.textualViewCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="Fabricante"
+            Default: =ThisItem.fabricante
+            DisplayMode: =DisplayMode.View
+            DisplayName: =DataSourceInfo([@Equipamentos],DataSourceInfo.DisplayName,Fabricante)
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =40
+            Required: =false
+            Width: =640
+            X: =0
+            Y: =4
+            ZIndex: =5
+
+            DataCardKey5 As label:
+                AutoHeight: =true
+                Height: =48
+                Size: =21
+                Text: =Parent.DisplayName
+                Width: =(Parent.Width - 60) * 0.4
+                Wrap: =false
+                X: =30
+                Y: =10 + (DataCardValue5.Height / 2) - (Self.Height / 2)
+                ZIndex: =1
+
+            DataCardValue5 As label:
+                AutoHeight: =true
+                DisplayMode: =Parent.DisplayMode
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Size: =21
+                Text: =Parent.Default
+                Width: =(Parent.Width - 60) * 0.6
+                X: =DataCardKey5.X + DataCardKey5.Width
+                Y: =10
+                ZIndex: =2
+
+        data_de_fabricacao_DataCard1 As typedDataCard.textualViewCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="data_de_fabricacao"
+            Default: =ThisItem.data_de_fabricacao
+            DisplayMode: =DisplayMode.View
+            DisplayName: =DataSourceInfo([@Equipamentos],DataSourceInfo.DisplayName,data_de_fabricacao)
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =40
+            Required: =false
+            Width: =640
+            X: =0
+            Y: =5
+            ZIndex: =5
+
+            DataCardKey6 As label:
+                AutoHeight: =true
+                Height: =48
+                Size: =21
+                Text: =Parent.DisplayName
+                Width: =(Parent.Width - 60) * 0.4
+                Wrap: =false
+                X: =30
+                Y: =10 + (DataCardValue6.Height / 2) - (Self.Height / 2)
+                ZIndex: =1
+
+            DataCardValue6 As label:
+                AutoHeight: =true
+                DisplayMode: =Parent.DisplayMode
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Size: =21
+                Text: =Parent.Default
+                Width: =(Parent.Width - 60) * 0.6
+                X: =DataCardKey6.X + DataCardKey6.Width
+                Y: =10
+                ZIndex: =2
+
+        data_aquisicao_DataCard1 As typedDataCard.textualViewCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="data_aquisicao"
+            Default: =ThisItem.data_aquisicao
+            DisplayMode: =DisplayMode.View
+            DisplayName: =DataSourceInfo([@Equipamentos],DataSourceInfo.DisplayName,data_aquisicao)
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =40
+            Required: =false
+            Width: =640
+            X: =0
+            Y: =6
+            ZIndex: =5
+
+            DataCardKey7 As label:
+                AutoHeight: =true
+                Height: =48
+                Size: =21
+                Text: =Parent.DisplayName
+                Width: =(Parent.Width - 60) * 0.4
+                Wrap: =false
+                X: =30
+                Y: =10 + (DataCardValue7.Height / 2) - (Self.Height / 2)
+                ZIndex: =1
+
+            DataCardValue7 As label:
+                AutoHeight: =true
+                DisplayMode: =Parent.DisplayMode
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Size: =21
+                Text: =Parent.Default
+                Width: =(Parent.Width - 60) * 0.6
+                X: =DataCardKey7.X + DataCardKey7.Width
+                Y: =10
+                ZIndex: =2
+
+        numero_de_serie_DataCard1 As typedDataCard.textualViewCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="numero_de_serie"
+            Default: =ThisItem.numero_de_serie
+            DisplayMode: =DisplayMode.View
+            DisplayName: =DataSourceInfo([@Equipamentos],DataSourceInfo.DisplayName,numero_de_serie)
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =40
+            Required: =false
+            Width: =640
+            X: =0
+            Y: =7
+            ZIndex: =5
+
+            DataCardKey8 As label:
+                AutoHeight: =true
+                Height: =48
+                Size: =21
+                Text: =Parent.DisplayName
+                Width: =(Parent.Width - 60) * 0.4
+                Wrap: =false
+                X: =30
+                Y: =10 + (DataCardValue8.Height / 2) - (Self.Height / 2)
+                ZIndex: =1
+
+            DataCardValue8 As label:
+                AutoHeight: =true
+                DisplayMode: =Parent.DisplayMode
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Size: =21
+                Text: =Parent.Default
+                Width: =(Parent.Width - 60) * 0.6
+                X: =DataCardKey8.X + DataCardKey8.Width
+                Y: =10
+                ZIndex: =2
+
+    "GalleryImagensEquipamento As gallery.'BrowseLayout_Horizontal_TwoTextOneImageVariant_ver5.0'":
+        DelayItemLoading: =true
+        Height: =334
+        Items: =colImagens
+        LoadingSpinner: =LoadingSpinner.Data
+        TemplatePadding: =0
+        TemplateSize: =Min(440, Self.Height - 60)
+        Width: =585
+        X: =28
+        Y: =653
+        ZIndex: =5
+
+        Image4 As image:
+            Height: =334
+            Image: =ThisItem.Value
+            ImagePosition: =ImagePosition.Fill
+            OnSelect: =Select(Parent)
+            RadiusBottomLeft: =8
+            RadiusBottomRight: =8
+            RadiusTopLeft: =8
+            RadiusTopRight: =8
+            Width: =233
+            X: =17
+            ZIndex: =1
+
+    Icon7 As icon.Edit:
+        Color: =RGBA(255, 255, 255, 1)
+        Icon: =Icon.Edit
+        OnSelect: =Navigate(CriarEditarEquipamento)
+        X: =483
+        Y: =18
+        ZIndex: =6
+
+    Icon7_1 As icon.Edit:
+        Color: =RGBA(255, 255, 255, 1)
+        Height: =73
+        Icon: =Icon.Trash
+        OnSelect: |-
+            =UpdateContext({varShowPopup: true})
+        Width: =79
+        X: =561
+        Y: =18
+        ZIndex: =7
+
+    "'Container-pop-up' As groupContainer.manualLayoutContainer":
+        Fill: =RGBA(0, 0, 0, 0.8)
+        Height: =Parent.Height
+        Visible: =varShowPopup
+        Width: =Parent.Width
+        ZIndex: =8
+
+        HtmlText2 As htmlViewer:
+            Height: =458
+            HtmlText: |-
+                ="<div style='border-radius:8%;height:370px;width:100%;background-color:#FCFCFC'>
+                <p style='text-align:center;padding-top:50px;'>Confirmação de Exclusão</p>
+                </div>"
+            Size: =21
+            Width: =560
+            X: =38
+            Y: =324
+            ZIndex: =1
+
+        Button2 As button:
+            Height: =70
+            OnSelect: |-
+                =Remove(Equipamentos, GalleryEquipamentos.Selected);
+                UpdateContext({varShowPopup:false});
+                Navigate(ListagemEquipamentos);
+                Notify("Item excluído com sucesso!",NotificationType.Success,1500)
+            Size: =24
+            Text: ="Confirmar"
+            Width: =200
+            X: =346
+            Y: =614
+            ZIndex: =2
+
+        Button2_1 As button:
+            Height: =70
+            OnSelect: |-
+                =UpdateContext({varShowPopup:false})
+            Size: =24
+            Text: ="Voltar"
+            Width: =200
+            X: =95
+            Y: =614
+            ZIndex: =3
+

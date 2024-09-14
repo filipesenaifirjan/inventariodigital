@@ -1,0 +1,119 @@
+HomeInventario As screen:
+    Fill: =Color.Transparent
+
+    Image2 As image:
+        Height: =422
+        Image: =computadores
+        ImagePosition: =ImagePosition.Fill
+        RadiusBottomLeft: =100
+        RadiusBottomRight: =100
+        Transparency: =0.5
+        Width: =Parent.Width
+        ZIndex: =1
+
+    "GaleryMenu As gallery.'BrowseLayout_Vertical_TwoTextOneImageTwoColumnOverlayVariant_ver5.0'":
+        DelayItemLoading: =true
+        Height: =Parent.Height
+        Items: =colTabMenu
+        Layout: =Layout.Vertical
+        LoadingSpinner: =LoadingSpinner.Data
+        ShowScrollbar: =false
+        TemplatePadding: =20
+        TemplateSize: =282
+        Transition: =Transition.Push
+        WrapCount: =2
+        Y: =444
+        ZIndex: =1
+
+        Image8 As image:
+            Height: =280
+            Image: =ThisItem.Imagem
+            ImagePosition: =ImagePosition.Center
+            OnSelect: =Select(Parent)
+            RadiusBottomLeft: =8
+            RadiusBottomRight: =8
+            RadiusTopLeft: =8
+            RadiusTopRight: =8
+            Width: =290
+            Y: =2
+            ZIndex: =1
+
+        Overlay1 As rectangle:
+            Fill: =RGBA(56, 103, 214, 0.4)
+            Height: =64
+            OnSelect: =Select(Parent)
+            Width: =Parent.TemplateWidth
+            Y: =218
+            ZIndex: =2
+
+        Title3 As label:
+            Align: =Align.Center
+            Height: =Self.Size * 1.8
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Text: =ThisItem.Titulo
+            VerticalAlign: =VerticalAlign.Top
+            Width: =Parent.TemplateWidth - 64
+            X: =32
+            Y: =229
+            ZIndex: =3
+
+        Button1 As button:
+            BorderColor: =azul900
+            BorderThickness: =5
+            Color: =Color.Transparent
+            Fill: =Color.Transparent
+            Height: =Parent.TemplateHeight
+            HoverColor: =Self.Fill
+            HoverFill: =Self.Fill
+            OnSelect: =Navigate(ThisItem.Tela)
+            PressedFill: =Self.Fill
+            Size: =24
+            Text: =
+            Width: =Parent.TemplateWidth
+            ZIndex: =4
+
+    Label1 As label:
+        Align: =Align.Center
+        Color: =RGBA(0, 18, 107, 1)
+        FontWeight: =FontWeight.Bold
+        Height: =70
+        Size: =25
+        Text: ="INVENTÁRIO DIGITAL"
+        Width: =Parent.Width
+        Y: =77
+        ZIndex: =2
+
+    Image3 As image:
+        Image: =User().Image
+        ImagePosition: =ImagePosition.Stretch
+        RadiusBottomLeft: =70
+        RadiusBottomRight: =70
+        RadiusTopLeft: =70
+        RadiusTopRight: =70
+        X: =72
+        Y: =297
+        ZIndex: =3
+
+    Label2 As label:
+        FontWeight: =FontWeight.Bold
+        Height: =35
+        Size: =15
+        Text: ="Bem vindo " & User().FullName
+        Width: =390
+        X: =210
+        Y: =297
+        ZIndex: =4
+
+    Label2_1 As label:
+        Height: =35
+        Size: =15
+        Text: =Text( Today(), DateTimeFormat.LongDate)
+        Width: =390
+        X: =210
+        Y: =351
+        ZIndex: =5
+
