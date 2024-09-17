@@ -1,3 +1,4 @@
 listagemInventario As screen:
     Fill: =RGBA(14, 123, 240, 0.08)
+    LoadingSpinnerColor: =App.Theme.Colors.Primary
 

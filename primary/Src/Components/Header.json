@@ -622,7 +622,7 @@
       "ZIndex",
       "Rotulo"
     ],
-    "LastModifiedTimestamp": "638618620163874450",
+    "LastModifiedTimestamp": "638621700262580452",
     "Name": "Header",
     "Rules": [
       {
@@ -697,7 +697,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638618620163874450",
+  "LastModifiedTimestamp": "638621700262580452",
   "Name": "f6d3464b14304061b1847c596fd1bcd8",
   "OverridableProperties": {},
   "Version": "1.0"

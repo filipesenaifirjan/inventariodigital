@@ -3,6 +3,9 @@ App As appinfo:
     OnStart: |+
         =Set(azul900,ColorValue("#03538c"));
          Set(varAdmin, !IsBlank( LookUp(Administradores, Título = User().Email)));
+        
+         Set(varItem, Blank());
+        Set(varShowInventario,false);
          
         Set(varIconEquipamento, 
          "data:image/svg+xml;utf8, " & EncodeUrl("<svg xmlns='http://www.w3.org/2000/svg' width='192' height='192' viewBox='0 0 24 24'><path fill='#2d3436' d='M1 2h22v4h-2V4H3v13h9v2H1zm13 6h10v14H14zm2 2v10h6V10zm1.998 6.998h2.004v2.004h-2.004zM5 20h7v2H5z'/></svg>"));
@@ -40,7 +43,8 @@ App As appinfo:
             Imagem: varIconAdmin,
             Tela: If(varAdmin, Admin,AcessoNegado)
          }
-         )
+         );
+        
         
         
         

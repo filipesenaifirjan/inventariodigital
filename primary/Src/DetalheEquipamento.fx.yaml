@@ -1,5 +1,6 @@
 DetalheEquipamento As screen:
     Fill: =RGBA(14, 123, 240, 0.08)
+    LoadingSpinnerColor: =App.Theme.Colors.Primary
     OnVisible: =ClearCollect(colImagens, GalleryEquipamentos.Selected.Anexos)
 
     Header_3 As Header:
@@ -37,6 +38,7 @@ DetalheEquipamento As screen:
         ZIndex: =2
 
     HtmlText1_1 As htmlViewer:
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
         Height: =903
         HtmlText: |-
             ="<div style='border-radius:8%;height:870px;width:100%;background-color:#FCFCFC'>
@@ -48,6 +50,7 @@ DetalheEquipamento As screen:
         ZIndex: =3
 
     FormViewer1 As formViewer:
+        BorderColor: =App.Theme.Colors.Darker40
         DataSource: =Equipamentos
         Height: =479
         Item: =GalleryEquipamentos.Selected
@@ -56,6 +59,7 @@ DetalheEquipamento As screen:
         ZIndex: =4
 
         Título_DataCard1 As typedDataCard.textualViewCard:
+            BorderColor: =App.Theme.Colors.Darker40
             BorderStyle: =BorderStyle.Solid
             DataField: ="Title"
             Default: =ThisItem.Título
@@ -71,6 +75,9 @@ DetalheEquipamento As screen:
 
             DataCardKey1 As label:
                 AutoHeight: =true
+                Color: =App.Theme.Colors.Darker30
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Font: =App.Theme.Font
                 Height: =48
                 Size: =21
                 Text: =Parent.DisplayName
@@ -82,7 +89,11 @@ DetalheEquipamento As screen:
 
             DataCardValue1 As label:
                 AutoHeight: =true
+                BorderColor: =App.Theme.Colors.Darker40
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
                 DisplayMode: =Parent.DisplayMode
+                Font: =App.Theme.Font
                 PaddingLeft: =0
                 PaddingRight: =0
                 PaddingTop: =0
@@ -94,6 +105,7 @@ DetalheEquipamento As screen:
                 ZIndex: =2
 
         Descricao_DataCard1 As typedDataCard.textualViewCard:
+            BorderColor: =App.Theme.Colors.Darker40
             BorderStyle: =BorderStyle.Solid
             DataField: ="Descricao"
             Default: =ThisItem.Descricao
@@ -109,6 +121,9 @@ DetalheEquipamento As screen:
 
             DataCardKey2 As label:
                 AutoHeight: =true
+                Color: =App.Theme.Colors.Darker30
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Font: =App.Theme.Font
                 Height: =48
                 Size: =21
                 Text: =Parent.DisplayName
@@ -120,7 +135,11 @@ DetalheEquipamento As screen:
 
             DataCardValue2 As label:
                 AutoHeight: =true
+                BorderColor: =App.Theme.Colors.Darker40
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
                 DisplayMode: =Parent.DisplayMode
+                Font: =App.Theme.Font
                 PaddingLeft: =0
                 PaddingRight: =0
                 PaddingTop: =0
@@ -132,6 +151,7 @@ DetalheEquipamento As screen:
                 ZIndex: =2
 
         Categoria_DataCard1 As typedDataCard.comboBoxViewCard:
+            BorderColor: =App.Theme.Colors.Darker40
             BorderStyle: =BorderStyle.Solid
             DataField: ="Categoria"
             Default: =ThisItem.Categoria
@@ -148,6 +168,9 @@ DetalheEquipamento As screen:
 
             DataCardKey3 As label:
                 AutoHeight: =true
+                Color: =App.Theme.Colors.Darker30
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Font: =App.Theme.Font
                 Height: =48
                 Size: =21
                 Text: =Parent.DisplayName
@@ -159,14 +182,30 @@ DetalheEquipamento As screen:
 
             DataCardValue3 As combobox:
                 BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                ChevronBackground: =App.Theme.Colors.Primary
+                ChevronDisabledBackground: =RGBA(166, 166, 166, 1)
+                ChevronDisabledFill: =RGBA(244, 244, 244, 1)
+                ChevronFill: =App.Theme.Colors.PrimaryForeground
+                ChevronHoverBackground: =App.Theme.Colors.Darker10
+                ChevronHoverFill: =App.Theme.Colors.PrimaryForeground
                 DefaultSelectedItems: =Parent.Default
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
                 DisplayFields: =["Value"]
                 DisplayMode: =Parent.DisplayMode
+                Font: =App.Theme.Font
                 Height: =70
+                HoverColor: =RGBA(0, 0, 0, 1)
+                HoverFill: =App.Theme.Colors.Lighter70
                 Items: =Choices([@Equipamentos].Categoria)
                 PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                PressedColor: =App.Theme.Colors.PrimaryForeground
+                PressedFill: =App.Theme.Colors.Darker30
                 SearchFields: =["Value"]
                 SearchItems: =Choices(Equipamentos.Categoria,DataCardValue3.SearchText)
+                SelectionColor: =App.Theme.Colors.PrimaryForeground
+                SelectionFill: =App.Theme.Colors.Primary
                 SelectMultiple: =false
                 Size: =21
                 Width: =(Parent.Width - 60) * 0.6
@@ -176,6 +215,10 @@ DetalheEquipamento As screen:
 
             ErrorMessage1 As label:
                 AutoHeight: =true
+                Color: =RGBA(168, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Font: =App.Theme.Font
+                FontWeight: =FontWeight.Semibold
                 Height: =10
                 Live: =Live.Assertive
                 PaddingBottom: =0
@@ -192,6 +235,9 @@ DetalheEquipamento As screen:
 
             StarVisible1 As label:
                 Align: =Align.Center
+                Color: =App.Theme.Colors.Darker30
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Font: =App.Theme.Font
                 Height: =DataCardKey3.Height
                 Size: =21
                 Text: ="*"
@@ -202,6 +248,7 @@ DetalheEquipamento As screen:
                 ZIndex: =4
 
         codigo_barras_DataCard1 As typedDataCard.textualViewCard:
+            BorderColor: =App.Theme.Colors.Darker40
             BorderStyle: =BorderStyle.Solid
             DataField: ="codigo_barras"
             Default: =ThisItem.codigo_barras
@@ -217,6 +264,9 @@ DetalheEquipamento As screen:
 
             DataCardKey4 As label:
                 AutoHeight: =true
+                Color: =App.Theme.Colors.Darker30
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Font: =App.Theme.Font
                 Height: =48
                 Size: =21
                 Text: =Parent.DisplayName
@@ -228,7 +278,11 @@ DetalheEquipamento As screen:
 
             DataCardValue4 As label:
                 AutoHeight: =true
+                BorderColor: =App.Theme.Colors.Darker40
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
                 DisplayMode: =Parent.DisplayMode
+                Font: =App.Theme.Font
                 PaddingLeft: =0
                 PaddingRight: =0
                 PaddingTop: =0
@@ -240,6 +294,7 @@ DetalheEquipamento As screen:
                 ZIndex: =2
 
         fabricante_DataCard1 As typedDataCard.textualViewCard:
+            BorderColor: =App.Theme.Colors.Darker40
             BorderStyle: =BorderStyle.Solid
             DataField: ="Fabricante"
             Default: =ThisItem.fabricante
@@ -255,6 +310,9 @@ DetalheEquipamento As screen:
 
             DataCardKey5 As label:
                 AutoHeight: =true
+                Color: =App.Theme.Colors.Darker30
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Font: =App.Theme.Font
                 Height: =48
                 Size: =21
                 Text: =Parent.DisplayName
@@ -266,7 +324,11 @@ DetalheEquipamento As screen:
 
             DataCardValue5 As label:
                 AutoHeight: =true
+                BorderColor: =App.Theme.Colors.Darker40
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
                 DisplayMode: =Parent.DisplayMode
+                Font: =App.Theme.Font
                 PaddingLeft: =0
                 PaddingRight: =0
                 PaddingTop: =0
@@ -278,6 +340,7 @@ DetalheEquipamento As screen:
                 ZIndex: =2
 
         data_de_fabricacao_DataCard1 As typedDataCard.textualViewCard:
+            BorderColor: =App.Theme.Colors.Darker40
             BorderStyle: =BorderStyle.Solid
             DataField: ="data_de_fabricacao"
             Default: =ThisItem.data_de_fabricacao
@@ -293,6 +356,9 @@ DetalheEquipamento As screen:
 
             DataCardKey6 As label:
                 AutoHeight: =true
+                Color: =App.Theme.Colors.Darker30
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Font: =App.Theme.Font
                 Height: =48
                 Size: =21
                 Text: =Parent.DisplayName
@@ -304,7 +370,11 @@ DetalheEquipamento As screen:
 
             DataCardValue6 As label:
                 AutoHeight: =true
+                BorderColor: =App.Theme.Colors.Darker40
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
                 DisplayMode: =Parent.DisplayMode
+                Font: =App.Theme.Font
                 PaddingLeft: =0
                 PaddingRight: =0
                 PaddingTop: =0
@@ -316,6 +386,7 @@ DetalheEquipamento As screen:
                 ZIndex: =2
 
         data_aquisicao_DataCard1 As typedDataCard.textualViewCard:
+            BorderColor: =App.Theme.Colors.Darker40
             BorderStyle: =BorderStyle.Solid
             DataField: ="data_aquisicao"
             Default: =ThisItem.data_aquisicao
@@ -331,6 +402,9 @@ DetalheEquipamento As screen:
 
             DataCardKey7 As label:
                 AutoHeight: =true
+                Color: =App.Theme.Colors.Darker30
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Font: =App.Theme.Font
                 Height: =48
                 Size: =21
                 Text: =Parent.DisplayName
@@ -342,7 +416,11 @@ DetalheEquipamento As screen:
 
             DataCardValue7 As label:
                 AutoHeight: =true
+                BorderColor: =App.Theme.Colors.Darker40
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
                 DisplayMode: =Parent.DisplayMode
+                Font: =App.Theme.Font
                 PaddingLeft: =0
                 PaddingRight: =0
                 PaddingTop: =0
@@ -354,6 +432,7 @@ DetalheEquipamento As screen:
                 ZIndex: =2
 
         numero_de_serie_DataCard1 As typedDataCard.textualViewCard:
+            BorderColor: =App.Theme.Colors.Darker40
             BorderStyle: =BorderStyle.Solid
             DataField: ="numero_de_serie"
             Default: =ThisItem.numero_de_serie
@@ -369,6 +448,9 @@ DetalheEquipamento As screen:
 
             DataCardKey8 As label:
                 AutoHeight: =true
+                Color: =App.Theme.Colors.Darker30
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Font: =App.Theme.Font
                 Height: =48
                 Size: =21
                 Text: =Parent.DisplayName
@@ -380,7 +462,11 @@ DetalheEquipamento As screen:
 
             DataCardValue8 As label:
                 AutoHeight: =true
+                BorderColor: =App.Theme.Colors.Darker40
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
                 DisplayMode: =Parent.DisplayMode
+                Font: =App.Theme.Font
                 PaddingLeft: =0
                 PaddingRight: =0
                 PaddingTop: =0
@@ -392,6 +478,7 @@ DetalheEquipamento As screen:
                 ZIndex: =2
 
     "GalleryImagensEquipamento As gallery.'BrowseLayout_Horizontal_TwoTextOneImageVariant_ver5.0'":
+        BorderColor: =App.Theme.Colors.Darker40
         DelayItemLoading: =true
         Height: =334
         Items: =colImagens
@@ -404,6 +491,9 @@ DetalheEquipamento As screen:
         ZIndex: =5
 
         Image4 As image:
+            BorderColor: =App.Theme.Colors.Darker40
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
             Height: =334
             Image: =ThisItem.Value
             ImagePosition: =ImagePosition.Fill
@@ -417,15 +507,21 @@ DetalheEquipamento As screen:
             ZIndex: =1
 
     Icon7 As icon.Edit:
+        BorderColor: =App.Theme.Colors.Darker40
         Color: =RGBA(255, 255, 255, 1)
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(244, 244, 244, 1)
         Icon: =Icon.Edit
-        OnSelect: =Navigate(CriarEditarEquipamento)
+        OnSelect: =EditForm(FormEquipamentos);Set(varItem, GalleryEquipamentos.Selected);Navigate(CriarEditarEquipamento)
         X: =483
         Y: =18
         ZIndex: =6
 
     Icon7_1 As icon.Edit:
+        BorderColor: =App.Theme.Colors.Darker40
         Color: =RGBA(255, 255, 255, 1)
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(244, 244, 244, 1)
         Height: =73
         Icon: =Icon.Trash
         OnSelect: |-
@@ -436,13 +532,19 @@ DetalheEquipamento As screen:
         ZIndex: =7
 
     "'Container-pop-up' As groupContainer.manualLayoutContainer":
+        DropShadow: =DropShadow.Light
         Fill: =RGBA(0, 0, 0, 0.8)
         Height: =Parent.Height
+        RadiusBottomLeft: =4
+        RadiusBottomRight: =4
+        RadiusTopLeft: =4
+        RadiusTopRight: =4
         Visible: =varShowPopup
         Width: =Parent.Width
         ZIndex: =8
 
         HtmlText2 As htmlViewer:
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
             Height: =458
             HtmlText: |-
                 ="<div style='border-radius:8%;height:370px;width:100%;background-color:#FCFCFC'>
@@ -455,12 +557,26 @@ DetalheEquipamento As screen:
             ZIndex: =1
 
         Button2 As button:
+            BorderColor: =App.Theme.Colors.Primary
+            Color: =App.Theme.Colors.PrimaryForeground
+            DisabledBorderColor: =RGBA(244, 244, 244, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            Fill: =App.Theme.Colors.Primary
+            Font: =App.Theme.Font
+            FontWeight: =FontWeight.Semibold
             Height: =70
+            HoverBorderColor: =App.Theme.Colors.Darker10
+            HoverColor: =App.Theme.Colors.PrimaryForeground
+            HoverFill: =App.Theme.Colors.Darker10
             OnSelect: |-
                 =Remove(Equipamentos, GalleryEquipamentos.Selected);
                 UpdateContext({varShowPopup:false});
                 Navigate(ListagemEquipamentos);
                 Notify("Item excluído com sucesso!",NotificationType.Success,1500)
+            PressedBorderColor: =App.Theme.Colors.Darker40
+            PressedColor: =Self.Color
+            PressedFill: =App.Theme.Colors.Darker40
             Size: =24
             Text: ="Confirmar"
             Width: =200
@@ -469,9 +585,23 @@ DetalheEquipamento As screen:
             ZIndex: =2
 
         Button2_1 As button:
+            BorderColor: =App.Theme.Colors.Primary
+            Color: =App.Theme.Colors.PrimaryForeground
+            DisabledBorderColor: =RGBA(244, 244, 244, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            Fill: =App.Theme.Colors.Primary
+            Font: =App.Theme.Font
+            FontWeight: =FontWeight.Semibold
             Height: =70
+            HoverBorderColor: =App.Theme.Colors.Darker10
+            HoverColor: =App.Theme.Colors.PrimaryForeground
+            HoverFill: =App.Theme.Colors.Darker10
             OnSelect: |-
                 =UpdateContext({varShowPopup:false})
+            PressedBorderColor: =App.Theme.Colors.Darker40
+            PressedColor: =Self.Color
+            PressedFill: =App.Theme.Colors.Darker40
             Size: =24
             Text: ="Voltar"
             Width: =200

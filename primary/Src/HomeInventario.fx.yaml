@@ -1,7 +1,11 @@
 HomeInventario As screen:
     Fill: =Color.Transparent
+    LoadingSpinnerColor: =App.Theme.Colors.Primary
 
     Image2 As image:
+        BorderColor: =App.Theme.Colors.Darker40
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
         Height: =422
         Image: =computadores
         ImagePosition: =ImagePosition.Fill
@@ -12,6 +16,7 @@ HomeInventario As screen:
         ZIndex: =1
 
     "GaleryMenu As gallery.'BrowseLayout_Vertical_TwoTextOneImageTwoColumnOverlayVariant_ver5.0'":
+        BorderColor: =App.Theme.Colors.Darker40
         DelayItemLoading: =true
         Height: =Parent.Height
         Items: =colTabMenu
@@ -26,6 +31,9 @@ HomeInventario As screen:
         ZIndex: =1
 
         Image8 As image:
+            BorderColor: =App.Theme.Colors.Darker40
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
             Height: =280
             Image: =ThisItem.Imagem
             ImagePosition: =ImagePosition.Center
@@ -39,6 +47,7 @@ HomeInventario As screen:
             ZIndex: =1
 
         Overlay1 As rectangle:
+            BorderColor: =App.Theme.Colors.Darker40
             Fill: =RGBA(56, 103, 214, 0.4)
             Height: =64
             OnSelect: =Select(Parent)
@@ -48,12 +57,17 @@ HomeInventario As screen:
 
         Title3 As label:
             Align: =Align.Center
+            Color: =App.Theme.Colors.PrimaryForeground
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Font: =App.Theme.Font
+            FontWeight: =FontWeight.Semibold
             Height: =Self.Size * 1.8
             OnSelect: =Select(Parent)
             PaddingBottom: =0
             PaddingLeft: =0
             PaddingRight: =0
             PaddingTop: =0
+            Size: =20
             Text: =ThisItem.Titulo
             VerticalAlign: =VerticalAlign.Top
             Width: =Parent.TemplateWidth - 64
@@ -65,11 +79,19 @@ HomeInventario As screen:
             BorderColor: =azul900
             BorderThickness: =5
             Color: =Color.Transparent
+            DisabledBorderColor: =RGBA(244, 244, 244, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
             Fill: =Color.Transparent
+            Font: =App.Theme.Font
+            FontWeight: =FontWeight.Semibold
             Height: =Parent.TemplateHeight
+            HoverBorderColor: =App.Theme.Colors.Darker10
             HoverColor: =Self.Fill
             HoverFill: =Self.Fill
             OnSelect: =Navigate(ThisItem.Tela)
+            PressedBorderColor: =App.Theme.Colors.Darker40
+            PressedColor: =Self.Color
             PressedFill: =Self.Fill
             Size: =24
             Text: =
@@ -78,7 +100,9 @@ HomeInventario As screen:
 
     Label1 As label:
         Align: =Align.Center
+        BorderColor: =App.Theme.Colors.Darker40
         Color: =RGBA(0, 18, 107, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
         FontWeight: =FontWeight.Bold
         Height: =70
         Size: =25
@@ -88,6 +112,9 @@ HomeInventario As screen:
         ZIndex: =2
 
     Image3 As image:
+        BorderColor: =App.Theme.Colors.Darker40
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
         Image: =User().Image
         ImagePosition: =ImagePosition.Stretch
         RadiusBottomLeft: =70
@@ -99,6 +126,10 @@ HomeInventario As screen:
         ZIndex: =3
 
     Label2 As label:
+        BorderColor: =App.Theme.Colors.Darker40
+        Color: =RGBA(0, 0, 0, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        Font: =App.Theme.Font
         FontWeight: =FontWeight.Bold
         Height: =35
         Size: =15
@@ -109,6 +140,10 @@ HomeInventario As screen:
         ZIndex: =4
 
     Label2_1 As label:
+        BorderColor: =App.Theme.Colors.Darker40
+        Color: =RGBA(0, 0, 0, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        Font: =App.Theme.Font
         Height: =35
         Size: =15
         Text: =Text( Today(), DateTimeFormat.LongDate)
