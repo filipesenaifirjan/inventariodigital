@@ -68,7 +68,11 @@ Menu As CanvasComponent:
             DisabledBorderColor: =RGBA(166, 166, 166, 1)
             DisabledColor: =RGBA(244, 244, 244, 1)
             Icon: =ThisItem.Icon
-            OnSelect: =If(ThisItem.Nome<>"Novo",Navigate(ThisItem.Tela),If(Menu.TipoFormulario="Equipamento",NewForm(FormEquipamentos);Set(varItem,Blank());Navigate(ThisItem.Tela);Clear(colImagens),NewForm(FormInventario);Set(varShowInventario, true );Refresh(Unidades)))
+            OnSelect: |-
+                =If(ThisItem.Nome<>"Novo",Navigate(ThisItem.Tela), NewForm(FormEquipamentos);Set(varItem,Blank());Navigate(ThisItem.Tela);Clear(colImagens))
+                
+                
+                //If(Menu.TipoFormulario="Equipamento",NewForm(FormEquipamentos);Set(varItem,Blank());Navigate(ThisItem.Tela);Clear(colImagens),NewForm(FormInventario);Set(varShowInventario, true );Refresh(Unidades)))
             X: =48
             Y: =12
             ZIndex: =3

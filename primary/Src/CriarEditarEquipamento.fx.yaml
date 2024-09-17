@@ -3,7 +3,7 @@ CriarEditarEquipamento As screen:
     LoadingSpinnerColor: =App.Theme.Colors.Primary
 
     Header_4 As Header:
-        Rotulo: ="Cadastrar Novo Equipamento"
+        Rotulo: =If(FormEquipamentos.Mode = 1, "Cadastrar novo equipamento", GalleryEquipamentos.Selected.Título)
 
     Menu_3 As Menu:
         Y: =1016
@@ -632,7 +632,7 @@ CriarEditarEquipamento As screen:
     "GalleryIamgensEquipamento As gallery.'BrowseLayout_Horizontal_TwoTextOneImageVariant_ver5.0'":
         BorderColor: =App.Theme.Colors.Darker40
         DelayItemLoading: =true
-        Height: =255
+        Height: =307
         Items: =colImagens
         LoadingSpinner: =LoadingSpinner.Data
         TemplatePadding: =0
@@ -658,4 +658,16 @@ CriarEditarEquipamento As screen:
             X: =4
             Y: =12
             ZIndex: =1
+
+    Icon9 As icon.Check:
+        BorderColor: =App.Theme.Colors.Darker40
+        Color: =Color.White
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(244, 244, 244, 1)
+        Height: =100
+        Icon: =Icon.Check
+        OnSelect: =SubmitForm(FormEquipamentos)
+        Width: =83
+        X: =557
+        ZIndex: =7
 
