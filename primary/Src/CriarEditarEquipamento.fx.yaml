@@ -659,6 +659,19 @@ CriarEditarEquipamento As screen:
             Y: =12
             ZIndex: =1
 
+        Icon10 As icon.Trash:
+            BorderColor: =App.Theme.Colors.Darker40
+            Color: =Color.Red
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(244, 244, 244, 1)
+            Height: =39
+            Icon: =Icon.Trash
+            OnSelect: =Select(Parent)
+            Width: =61
+            X: =4
+            Y: =268
+            ZIndex: =2
+
     Icon9 As icon.Check:
         BorderColor: =App.Theme.Colors.Darker40
         Color: =Color.White
