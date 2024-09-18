@@ -38,6 +38,71 @@ CriarEditarEquipamento As screen:
         Y: =136
         ZIndex: =4
 
+        codigo_barras_DataCard2 As typedDataCard.fluentV9TextualEditCard:
+            BorderColor: =App.Theme.Colors.Darker40
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="codigo_barras"
+            Default: =ThisItem.codigo_barras
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@Equipamentos],DataSourceInfo.DisplayName,codigo_barras)
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =70
+            MaxLength: =DataSourceInfo([@Equipamentos], DataSourceInfo.MaxLength, codigo_barras)
+            Required: =false
+            Update: =DataCardValue15.Value
+            Width: =640
+            X: =0
+            Y: =6
+            ZIndex: =1
+
+            DataCardKey15 As Text:
+                DisplayMode: =DisplayMode.Edit
+                Height: =22
+                Size: =20
+                Text: =Parent.DisplayName
+                Weight: ='TextCanvas.Weight'.Semibold
+                Width: =Parent.Width - 48
+                Wrap: =false
+                X: =24
+                Y: =10
+                ZIndex: =1
+
+            "DataCardValue15 As 'Text input'":
+                AccessibleLabel: =Parent.DisplayName
+                DisplayMode: =Parent.DisplayMode
+                FontSize: =18
+                Height: =32
+                Mode: ="'TextInputCanvas.Mode'.TextInputModeSingleLine"
+                Required: =Parent.Required
+                ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                Value: =Parent.Default
+                Width: =Parent.Width - 48
+                X: =24
+                Y: =DataCardKey15.Y + DataCardKey15.Height + 4
+                ZIndex: =2
+
+            ErrorMessage8 As Text:
+                DisplayMode: =DisplayMode.Edit
+                Height: =30
+                Text: =Parent.Error
+                Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                Width: =Parent.Width - 48
+                Wrap: =true
+                X: =24
+                Y: =DataCardValue15.Y + DataCardValue15.Height
+                ZIndex: =3
+
+            StarVisible8 As Text:
+                Align: ='TextCanvas.Align'.Center
+                DisplayMode: =DisplayMode.Edit
+                Height: =30
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                X: =0
+                Y: =DataCardKey15.Y
+                ZIndex: =4
+
         Anexos_DataCard1 As typedDataCard.attachmentsEditCard:
             BorderColor: =App.Theme.Colors.Darker40
             BorderStyle: =BorderStyle.Solid
@@ -48,11 +113,11 @@ CriarEditarEquipamento As screen:
             Fill: =RGBA(0, 0, 0, 0)
             Height: =50
             Required: =false
-            Update: =DataCardValue17.Attachments
+            Update: =colImagens
             Visible: =false
             Width: =640
             X: =0
-            Y: =8
+            Y: =5
             ZIndex: =1
 
             DataCardKey17 As label:
@@ -142,7 +207,7 @@ CriarEditarEquipamento As screen:
             DisplayMode: =Parent.DisplayMode
             DisplayName: =DataSourceInfo([@Equipamentos],DataSourceInfo.DisplayName,Title)
             Fill: =RGBA(0, 0, 0, 0)
-            Height: =70
+            Height: =100
             MaxLength: =DataSourceInfo([@Equipamentos], DataSourceInfo.MaxLength, Title)
             Required: =false
             Update: =DataCardValue9.Value
@@ -153,18 +218,20 @@ CriarEditarEquipamento As screen:
 
             DataCardKey9 As Text:
                 DisplayMode: =DisplayMode.Edit
-                Height: =22
+                Height: =40
+                Size: =20
                 Text: =Parent.DisplayName
                 Weight: ='TextCanvas.Weight'.Semibold
                 Width: =Parent.Width - 48
                 Wrap: =false
-                X: =24
-                Y: =10
+                X: =30
+                Y: =4
                 ZIndex: =1
 
             "DataCardValue9 As 'Text input'":
                 AccessibleLabel: =Parent.DisplayName
                 DisplayMode: =Parent.DisplayMode
+                FontSize: =18
                 Height: =32
                 Mode: ="'TextInputCanvas.Mode'.TextInputModeSingleLine"
                 Required: =Parent.Required
@@ -172,7 +239,7 @@ CriarEditarEquipamento As screen:
                 Value: =Parent.Default
                 Width: =Parent.Width - 48
                 X: =24
-                Y: =DataCardKey9.Y + DataCardKey9.Height + 4
+                Y: =52
                 ZIndex: =2
 
             ErrorMessage2 As Text:
@@ -217,6 +284,7 @@ CriarEditarEquipamento As screen:
             DataCardKey10 As Text:
                 DisplayMode: =DisplayMode.Edit
                 Height: =22
+                Size: =20
                 Text: =Parent.DisplayName
                 Weight: ='TextCanvas.Weight'.Semibold
                 Width: =Parent.Width - 48
@@ -228,6 +296,7 @@ CriarEditarEquipamento As screen:
             "DataCardValue10 As 'Text input'":
                 AccessibleLabel: =Parent.DisplayName
                 DisplayMode: =Parent.DisplayMode
+                FontSize: =18
                 Height: =32
                 Mode: ="'TextInputCanvas.Mode'.TextInputModeSingleLine"
                 Required: =Parent.Required
@@ -279,6 +348,7 @@ CriarEditarEquipamento As screen:
             DataCardKey11 As Text:
                 DisplayMode: =DisplayMode.Edit
                 Height: =22
+                Size: =20
                 Text: =Parent.DisplayName
                 Weight: ='TextCanvas.Weight'.Semibold
                 Width: =Parent.Width - 48
@@ -291,6 +361,7 @@ CriarEditarEquipamento As screen:
                 AccessibleLabel: =If(Parent.Required, Substitute("{0}. Required.", "{0}", Parent.DisplayName), Parent.DisplayName)
                 DefaultSelectedItems: =[Parent.Default]
                 DisplayMode: =Parent.DisplayMode
+                FontSize: =18
                 Height: =32
                 Items: =Choices([@Equipamentos].Categoria)
                 ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
@@ -341,6 +412,7 @@ CriarEditarEquipamento As screen:
             DataCardKey12 As Text:
                 DisplayMode: =DisplayMode.Edit
                 Height: =22
+                Size: =20
                 Text: =Parent.DisplayName
                 Weight: ='TextCanvas.Weight'.Semibold
                 Width: =Parent.Width - 48
@@ -352,6 +424,7 @@ CriarEditarEquipamento As screen:
             "DataCardValue12 As 'Text input'":
                 AccessibleLabel: =Parent.DisplayName
                 DisplayMode: =Parent.DisplayMode
+                FontSize: =18
                 Height: =32
                 Mode: ="'TextInputCanvas.Mode'.TextInputModeSingleLine"
                 Required: =Parent.Required
@@ -384,68 +457,6 @@ CriarEditarEquipamento As screen:
                 Y: =DataCardKey12.Y
                 ZIndex: =4
 
-        data_de_fabricacao_DataCard2 As typedDataCard.fluentV9DateEditCard:
-            BorderColor: =App.Theme.Colors.Darker40
-            BorderStyle: =BorderStyle.Solid
-            DataField: ="data_de_fabricacao"
-            Default: =ThisItem.data_de_fabricacao
-            DisplayMode: =Parent.DisplayMode
-            DisplayName: =DataSourceInfo([@Equipamentos],DataSourceInfo.DisplayName,data_de_fabricacao)
-            Fill: =RGBA(0, 0, 0, 0)
-            Height: =70
-            Required: =false
-            Update: =DataCardValue13.SelectedDate
-            Width: =640
-            X: =0
-            Y: =4
-            ZIndex: =4
-
-            DataCardKey13 As Text:
-                DisplayMode: =DisplayMode.Edit
-                Height: =22
-                Text: =Parent.DisplayName
-                Weight: ='TextCanvas.Weight'.Semibold
-                Width: =Parent.Width - 48
-                Wrap: =false
-                X: =24
-                Y: =10
-                ZIndex: =1
-
-            "DataCardValue13 As 'Date picker'":
-                AccessibleLabel: =If(Parent.Required, Substitute("{0}. Required.", "{0}", Parent.DisplayName), Parent.DisplayName)
-                DisplayMode: =Parent.DisplayMode
-                EndDate: =Date(Year(Today())+100, 12, 31)
-                Height: =32
-                SelectedDate: =Parent.Default
-                StartDate: =Date(1900, 1, 1)
-                ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
-                Width: =Parent.Width - 48
-                X: =24
-                Y: =DataCardKey13.Y + DataCardKey13.Height + 4
-                ZIndex: =2
-
-            ErrorMessage6 As Text:
-                DisplayMode: =DisplayMode.Edit
-                Height: =30
-                Text: =Parent.Error
-                Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
-                Width: =Parent.Width - 48
-                Wrap: =true
-                X: =24
-                Y: =DataCardValue13.Y + DataCardValue13.Height
-                ZIndex: =3
-
-            StarVisible6 As Text:
-                Align: ='TextCanvas.Align'.Center
-                DisplayMode: =DisplayMode.Edit
-                Height: =30
-                Text: ="*"
-                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
-                Width: =30
-                X: =0
-                Y: =DataCardKey13.Y
-                ZIndex: =4
-
         data_aquisicao_DataCard2 As typedDataCard.fluentV9DateEditCard:
             BorderColor: =App.Theme.Colors.Darker40
             BorderStyle: =BorderStyle.Solid
@@ -459,12 +470,13 @@ CriarEditarEquipamento As screen:
             Update: =DataCardValue14.SelectedDate
             Width: =640
             X: =0
-            Y: =5
+            Y: =4
             ZIndex: =4
 
             DataCardKey14 As Text:
                 DisplayMode: =DisplayMode.Edit
                 Height: =22
+                Size: =20
                 Text: =Parent.DisplayName
                 Weight: ='TextCanvas.Weight'.Semibold
                 Width: =Parent.Width - 48
@@ -477,6 +489,7 @@ CriarEditarEquipamento As screen:
                 AccessibleLabel: =If(Parent.Required, Substitute("{0}. Required.", "{0}", Parent.DisplayName), Parent.DisplayName)
                 DisplayMode: =Parent.DisplayMode
                 EndDate: =Date(Year(Today())+100, 12, 31)
+                FontSize: =18
                 Height: =32
                 SelectedDate: =Parent.Default
                 StartDate: =Date(1900, 1, 1)
@@ -508,138 +521,17 @@ CriarEditarEquipamento As screen:
                 Y: =DataCardKey14.Y
                 ZIndex: =4
 
-        numero_de_serie_DataCard2 As typedDataCard.fluentV9NumberEditCard:
-            BorderColor: =App.Theme.Colors.Darker40
-            BorderStyle: =BorderStyle.Solid
-            DataField: ="numero_de_serie"
-            Default: =ThisItem.numero_de_serie
-            DisplayMode: =Parent.DisplayMode
-            DisplayName: =DataSourceInfo([@Equipamentos],DataSourceInfo.DisplayName,numero_de_serie)
-            Fill: =RGBA(0, 0, 0, 0)
-            Height: =70
-            Required: =false
-            Update: =Value(DataCardValue15.Value)
-            Width: =640
-            X: =0
-            Y: =6
-            ZIndex: =4
-
-            DataCardKey15 As Text:
-                DisplayMode: =DisplayMode.Edit
-                Height: =22
-                Text: =Parent.DisplayName
-                Weight: ='TextCanvas.Weight'.Semibold
-                Width: =Parent.Width - 48
-                Wrap: =false
-                X: =24
-                Y: =10
-                ZIndex: =1
-
-            "DataCardValue15 As 'Text input'":
-                AccessibleLabel: =If(Parent.Required, Substitute("{0}. Required.", "{0}", Parent.DisplayName), Parent.DisplayName)
-                DisplayMode: =Parent.DisplayMode
-                Height: =32
-                ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
-                Value: =Parent.Default
-                Width: =Parent.Width - 48
-                X: =24
-                Y: =DataCardKey15.Y + DataCardKey15.Height + 4
-                ZIndex: =2
-
-            ErrorMessage8 As Text:
-                DisplayMode: =DisplayMode.Edit
-                Height: =30
-                Text: =Parent.Error
-                Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
-                Width: =Parent.Width - 48
-                Wrap: =true
-                X: =24
-                Y: =DataCardValue15.Y + DataCardValue15.Height
-                ZIndex: =3
-
-            StarVisible8 As Text:
-                Align: ='TextCanvas.Align'.Center
-                DisplayMode: =DisplayMode.Edit
-                Height: =30
-                Text: ="*"
-                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
-                Width: =30
-                X: =0
-                Y: =DataCardKey15.Y
-                ZIndex: =4
-
-        responsavel_DataCard1 As typedDataCard.fluentV9ComboBoxEditCard:
-            BorderColor: =App.Theme.Colors.Darker40
-            BorderStyle: =BorderStyle.Solid
-            DataField: ="responsavel"
-            Default: =ThisItem.responsavel
-            DisplayMode: =Parent.DisplayMode
-            DisplayName: =DataSourceInfo([@Equipamentos],DataSourceInfo.DisplayName,responsavel)
-            Fill: =RGBA(0, 0, 0, 0)
-            Height: =70
-            Required: =false
-            Update: =DataCardValue16.Selected
-            Width: =640
-            X: =0
-            Y: =7
-            ZIndex: =4
-
-            DataCardKey16 As Text:
-                DisplayMode: =DisplayMode.Edit
-                Height: =22
-                Text: =Parent.DisplayName
-                Weight: ='TextCanvas.Weight'.Semibold
-                Width: =Parent.Width - 48
-                Wrap: =false
-                X: =24
-                Y: =10
-                ZIndex: =1
-
-            DataCardValue16 As Combobox.pcfdataset:
-                AccessibleLabel: =If(Parent.Required, Substitute("{0}. Required.", "{0}", Parent.DisplayName), Parent.DisplayName)
-                DefaultSelectedItems: =[Parent.Default]
-                DisplayMode: =Parent.DisplayMode
-                Height: =32
-                Items: =Choices([@Equipamentos].responsavel)
-                ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
-                Width: =Parent.Width - 48
-                X: =24
-                Y: =DataCardKey16.Y + DataCardKey16.Height + 4
-                ZIndex: =2
-
-            ErrorMessage9 As Text:
-                DisplayMode: =DisplayMode.Edit
-                Height: =30
-                Text: =Parent.Error
-                Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
-                Width: =Parent.Width - 48
-                Wrap: =true
-                X: =24
-                Y: =DataCardValue16.Y + DataCardValue16.Height
-                ZIndex: =3
-
-            StarVisible9 As Text:
-                Align: ='TextCanvas.Align'.Center
-                DisplayMode: =DisplayMode.Edit
-                Height: =20
-                Text: ="*"
-                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
-                Width: =30
-                X: =0
-                Y: =DataCardKey16.Y
-                ZIndex: =4
-
     "GalleryIamgensEquipamento As gallery.'BrowseLayout_Horizontal_TwoTextOneImageVariant_ver5.0'":
         BorderColor: =App.Theme.Colors.Darker40
         DelayItemLoading: =true
-        Height: =307
+        Height: =353
         Items: =colImagens
         LoadingSpinner: =LoadingSpinner.Data
         TemplatePadding: =0
         TemplateSize: =210
         Width: =619
         X: =10
-        Y: =709
+        Y: =627
         ZIndex: =5
 
         Image5 As image:
@@ -656,7 +548,6 @@ CriarEditarEquipamento As screen:
             RadiusTopRight: =8
             Width: =206
             X: =4
-            Y: =12
             ZIndex: =1
 
         Icon10 As icon.Trash:
@@ -666,10 +557,10 @@ CriarEditarEquipamento As screen:
             DisabledColor: =RGBA(244, 244, 244, 1)
             Height: =39
             Icon: =Icon.Trash
-            OnSelect: =Select(Parent)
+            OnSelect: =RemoveIf(colImagens, DisplayName = ThisItem.DisplayName)
             Width: =61
-            X: =4
-            Y: =268
+            X: =63
+            Y: =279
             ZIndex: =2
 
     Icon9 As icon.Check:
